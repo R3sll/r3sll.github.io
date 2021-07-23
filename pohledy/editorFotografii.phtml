@@ -1,0 +1,44 @@
+<br />
+<br />
+<br />
+
+<form method="post" class="edit" enctype="multipart/form-data">
+
+	<h1>EDITOR FOTOGRAFIÍ</h1>
+
+	<br />
+
+	Album
+
+	<br />
+
+	<div class="form-group">
+		<select name="album" class="form-control my-input" required>
+			<option value=''>Vyber album</option>
+			<?php foreach ($seznamAlb as $album) : ?>
+				<option value="<?php echo $album['id_alba'] ?>"><?= $album['nazev_alba'] ?></option>
+			<?php endforeach ?>
+		</select>
+	</div>
+
+	<br />
+
+	<div class="registrace">
+		<p>Pokud chceš vytvořit album, klikni <a href="editorAlb" class="registrace">sem</a>.</p>
+	</div>
+
+	<br />
+
+	<input type="file" name="img" id="img" required>
+
+	<br />
+	<br />
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-block btn-warning send-button tx-tfm">ULOŽIT FOTOGRAFII</button>
+	</div>
+
+</form>
+
+<br />
+<br />

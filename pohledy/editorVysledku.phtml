@@ -1,0 +1,107 @@
+<br />
+<br />
+<br />
+
+<?php $datum = $vysledek['caskonani'] ?>
+
+<form method="post" class="edit">
+
+	<h1>EDITOR VÝSLEDKŮ ZE ZÁPASU</h1>
+
+	<input type="hidden" name="id_zapasu" value="<?= $vysledek['id_zapasu'] ?>" />
+
+	<br />
+
+	Čas konání
+
+	<br />
+
+	<div class="form-group">
+		<input type="datetime-local" name="caskonani" class="form-control my-input" value="<?php if ($datum) {
+																								echo date("Y-m-d\TH:i:s", strtotime($datum));
+																							} else {
+																								echo "2021-01-01T00:00";
+																							} ?>" min="2021-01-01T00:00" required/>
+	</div>
+
+	<br />
+	<br />
+
+	Domácí - výsledek
+
+	<br />
+
+	<div class="form-group">
+		<input type="number" name="domaci_vysledek" class="form-control my-input" min="0" max="99" value="<?= $vysledek['domaci_vysledek'] ?>" />
+	</div>
+
+	<br />
+	<br />
+
+	Hosté - výsledek
+
+	<br />
+
+	<div class="form-group">
+		<input type="number" name="hoste_vysledek" class="form-control my-input" min="0" max="99" value="<?= $vysledek['hoste_vysledek'] ?>" />
+	</div>
+
+	<br />
+	<br />
+
+	Domácí tým
+
+	<br />
+
+	<div class="form-group">
+		<select name="domaci" class="form-control my-input" required>
+			<option value=''>Vyberte tým</option>
+			<?php foreach ($tymy as $tym) : ?>
+				<option value="<?php echo $tym['id_tymy'] ?>" <?php if ($tym['id_tymy'] == $vysledek['domaci'])  echo 'selected'; ?>><?= $tym['nazev_tymu'] ?></option>
+			<?php endforeach ?>
+		</select>
+	</div>
+
+	<br />
+	<br />
+
+	Hostující tým
+
+	<br />
+
+	<div class="form-group">
+		<select name="hoste" class="form-control my-input" required>
+			<option value=''>Vyberte tým</option>
+			<?php foreach ($tymy as $tym) : ?>
+				<option value="<?php echo $tym['id_tymy'] ?>" <?php if ($tym['id_tymy'] == $vysledek['hoste'])  echo 'selected'; ?>><?= $tym['nazev_tymu'] ?></option>
+			<?php endforeach ?>
+		</select>
+	</div>
+
+	<br />
+	<br />
+
+	Kategorie
+
+	<br />
+
+	<div class="form-group">
+		<select name="kategorie_id" class="form-control my-input" required>
+			<option value=''>Vyberte kategorii</option>
+			<?php foreach ($seznamKategorii as $kategorie) : ?>
+				<option value="<?php echo $kategorie['id_kategorie'] ?>" <?php if ($kategorie['id_kategorie'] == $vysledek['kategorie_id'])  echo 'selected'; ?>><?= $kategorie['nazev_kategorie'] ?></option>
+			<?php endforeach ?>
+		</select>
+	</div>
+
+	<br />
+	<br />
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-block btn-warning send-button tx-tfm">ULOŽIT VÝSLEDEK</button>
+	</div>
+
+</form>
+
+<br />
+<br />

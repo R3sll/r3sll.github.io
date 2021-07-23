@@ -1,0 +1,47 @@
+<br />
+<br />
+<br />
+
+<form method="post" class="edit">
+
+	<h1>EDITOR FUNKCIONÁŘŮ</h1>
+
+	<input type="hidden" name="id_clena" value="<?= $funkcionar['id_clena'] ?>" />
+
+	<br />
+
+	Funkcionář
+
+	<br />
+
+	<div class="form-group">
+		<select name="funkcionar" class="form-control my-input" required>
+			<option value=''>Vyberte funkcionáře</option>
+			<?php foreach ($seznamClenu as $clen) : ?>
+				<option value="<?php echo $clen['id_realizacni_tym'] ?>" <?php if ($clen['id_realizacni_tym'] == $funkcionar['id_clena'])  echo 'selected'; ?>><?= $clen['jmeno'] ?> <?= $clen['prijmeni'] ?></option>
+			<?php endforeach ?>
+		</select>
+	</div>
+
+	<br />
+	<br />
+
+	Pozice
+
+	<br />
+
+	<div class="form-group">
+		<input type="text" name="pozice" class="form-control my-input" value="<?= $funkcionar['pozice'] ?>" required/>
+	</div>
+
+	<br />
+	<br />
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-block btn-warning send-button tx-tfm">ULOŽIT FUNKCIONÁŘE</button>
+	</div>
+
+</form>
+
+<br />
+<br />

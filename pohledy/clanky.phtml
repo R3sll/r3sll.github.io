@@ -1,0 +1,52 @@
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="hlavniStrana">ÚVOD</a></li>
+            <li class="breadcrumb-item active" aria-current="page">SEZNAM ČLÁNKŮ</li>
+        </ol>
+    </nav>
+
+    <div class="orientnadpis">
+        <div class="container">
+            <div class="row">
+                <div class="orientnadpisdiv col-md-12 d-flex justify-content-center align-items-center align-content-center">
+                    <div class="orientnadpissam d-flex justify-content-center align-items-center align-content-center">
+                        <p class="nadpisorient">SEZNAM ČLÁNKŮ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gr py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+                <?php foreach ($clanky as $clanek) : ?>
+                    <?php $datum = $clanek['datum']  ?>
+                    <div class="col-md-4" data-bs-hover-animate="pulse">
+                        <div class="tuzka card mb-4 box-shadow">
+                            <a href="/clanek/<?= $clanek['url'] ?>">
+                                <div class="hrnicek border border-warning" style="background-image: url(<?= $clanek['cesta'] ?>);"></div>
+
+                                <div class="card-body">
+                                    <h4><?= htmlspecialchars($clanek['nazev_clanku']) ?></h4>
+                                    <small class="text-muted"><?php echo date("d.m.Y", strtotime($datum)); ?></small>
+                                    <span class="ckamo text-justify"><?= htmlspecialchars($clanek['popisek']) ?></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <?php if ($admin) : ?>
+
+                        <a href="editor/<?= $clanek['url'] ?>">Editovat</a>
+                        <a href="clanek/<?= $clanek['url'] ?>/odstranit" onClick="return confirm('Určitě chcete smazat článek?')">Odstranit</a>
+
+                    <?php endif ?>
+
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?= $strankovani ?>
+    </div>
+    

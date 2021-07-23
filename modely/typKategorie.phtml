@@ -1,0 +1,191 @@
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="hlavniStrana">ÚVOD</a></li>
+            <li class="breadcrumb-item"><a href="kategorie">KATEGORIE</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= htmlspecialchars($nazev_kategorie) ?></li>
+        </ol>
+    </nav>
+
+    <div class="orientnadpis">
+        <div class="container">
+            <div class="row">
+                <div class="orientnadpisdiv col-md-12 d-flex justify-content-center align-items-center align-content-center">
+                    <div class="orientnadpissam d-flex justify-content-center align-items-center align-content-center">
+                        <p class="nadpisorient">HRÁČI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="seznamhracu">
+        <div class="container">
+            <div class="row">
+                <?php foreach ($seznamHracu as $hraci) : ?>
+
+                    <div class="col-md-3 d-flex justify-content-center align-items-center align-content-center">
+                        <div class="text-center infoohraci">
+                            <p class="jmenoprijmeni"><?= htmlspecialchars($hraci['jmeno']) ?> <?= htmlspecialchars($hraci['prijmeni']) ?></p>
+                            <p class="cislodresu"><?= $hraci['cislo_dresu'] ?></p>
+                            <p class="post"><?= htmlspecialchars($hraci['post']) ?></p>
+                        </div>
+                    </div>
+
+                    <?php if ($admin) : ?>
+                        <div class="col-md-3">
+                            <a href="editorHracu/<?= $hraci['url'] ?>/<?= $hraci['id_hraci'] ?>">Editovat</a>
+                            <a href="typKategorie/<?= $hraci['url'] ?>/odstranit/<?= $hraci['id_hraci'] ?>" onClick="return confirm('Určitě chcete odebrat funkci hráče?')">Odstranit</a>
+                        </div>
+                    <?php endif ?>
+
+                <?php endforeach ?>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="orientnadpis">
+        <div class="container">
+            <div class="row">
+                <div class="orientnadpisdiv col-md-12 d-flex justify-content-center align-items-center align-content-center">
+                    <div class="orientnadpissam d-flex justify-content-center align-items-center align-content-center">
+                        <p class="nadpisorient">REALIZAČNÍ TÝM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="treneri team-boxed">
+        <div class="container">
+            <div class="row d-flex justify-content-center people">
+
+                <?php foreach ($seznamTreneru as $trener) : ?>
+                    <?php $tel_cislo = $trener['tel_cislo'] ?>
+
+                    <div class="col-md-6 col-lg-4 item" data-bs-hover-animate="pulse">
+                        <div class="karta box">
+                            <p class="name"><?= htmlspecialchars($trener['jmeno']) ?> <?= htmlspecialchars($trener['prijmeni']) ?></p>
+                            <p class="title"><?php echo number_format($tel_cislo, 0, "", " "); ?></p>
+                            <p class="description"><?= htmlspecialchars($trener['email']) ?></p>
+                        </div>
+                    </div>
+
+                <?php endforeach ?>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="orientnadpis">
+        <div class="container">
+            <div class="row">
+                <div class="orientnadpisdiv col-md-12 d-flex justify-content-center align-items-center align-content-center">
+                    <div class="orientnadpissam d-flex justify-content-center align-items-center align-content-center">
+                        <p class="nadpisorient">TRÉNINKY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 treninkcas">
+
+                    <div class="d-flex justify-content-center trenink">
+                        <p class="jakydentrenink">PONDĚLÍ</p>
+                        <p class="castrenink d-flex justify-content-center">10:00 - 12:00</p>
+                        <p class="kdetrenink d-flex justify-content-end">ZŠ KUKLENY</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center trenink">
+                        <p class="jakydentrenink">PONDĚLÍ</p>
+                        <p class="castrenink d-flex justify-content-center">10:00 - 12:00</p>
+                        <p class="kdetrenink d-flex justify-content-end">ZŠ KUKLENY</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center trenink">
+                        <p class="jakydentrenink">PONDĚLÍ</p>
+                        <p class="castrenink d-flex justify-content-center">10:00 - 12:00</p>
+                        <p class="kdetrenink d-flex justify-content-end">ZŠ KUKLENY</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="orientnadpis">
+        <div class="container">
+            <div class="row">
+                <div class="orientnadpisdiv col-md-12 d-flex justify-content-center align-items-center align-content-center">
+                    <div class="orientnadpissam d-flex justify-content-center align-items-center align-content-center">
+                        <p class="nadpisorient">VÝSLEDKY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabulkavysledku">
+        <div class="container">
+            <div class="row">
+                <div class="tabulka col-md-12">
+                    <form>
+                        <div class="d-flex justify-content-center">
+                            <div class="table-responsive">
+                                <table class="table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>DATUM KONÁNÍ</th>
+                                            <th>TÝM</th>
+                                            <th>VÝSLEDEK</th>
+                                            <?php if ($admin) : ?>
+                                                <th>ÚPRAVA</th>
+                                            <?php endif ?>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <?php foreach ($seznamVysledku as $vysledky) : ?>
+                                            <tr>
+                                                <?php $datum = $vysledky['caskonani'] ?>
+                                                <td><?php echo date("d.m.", strtotime($datum)); ?></td>
+                                                <td><?= htmlspecialchars($vysledky['domaci']) ?> - <?= htmlspecialchars($vysledky['hoste']) ?></td>
+                                                <?php $domVys = $vysledky['domaci_vysledek'];
+                                                $hosVys = $vysledky['hoste_vysledek']; ?>
+                                                <td><?php if ($domVys && $hosVys) {
+                                                        echo $domVys . ":" . $hosVys;
+                                                    } else {
+                                                        echo "- : -";
+                                                    } ?></td>
+
+
+                                                <?php if ($admin) : ?>
+                                                    <td>
+                                                        <a href="editorVysledku/<?= $vysledky['id_zapasu'] ?>">Editovat</a>
+                                                        <a class="odst" href="typKategorie/odstranit/<?= $vysledky['id_zapasu'] ?>">Odstranit</a>
+                                                    </td>
+                                                <?php endif ?>
+                                            </tr>
+
+
+                                        <?php endforeach ?>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

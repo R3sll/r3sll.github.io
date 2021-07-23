@@ -1,0 +1,44 @@
+<br /><br />
+<div class="administrace container">
+	<p class="adminvitej">Vítejte v administraci, jste přihlášeni jako <?= $jmeno ?>.</p>
+	<?php if (!$admin) : ?>
+		<p>Nemáte administrátorská oprávnění, požádejte administrátora webu, aby vám je přidělil.</p>
+
+	<?php endif ?>
+	<?php if ($admin) : ?>
+		<br />
+		<div class=" row">
+			<div class="col-md-6 text-center ">
+				<h2><a href="editor">Editor článků</a></h2>
+				<h2><a href="editorClenu">Editor všech členů</a></h2>
+				<h2><a href="editorHracu">Editor hráčů</a></h2>
+				<h2><a href="editorFunkcionaru">Editor funkcionářů</a></h2>
+				<h2><a href="editorTreneru">Editor trenérů</a></h2>
+				<h2><a href="editorTymu">Editor týmu</a></h2>
+				<h2><a href="editorVysledku">Editor výsledků</a></h2>
+				<h2><a href="editorAlb">Editor alb</a></h2>
+				<h2><a href="editorFotografii">Editor fotografií</a></h2>
+			</div>
+
+			<br>
+
+			<div class="admn col-md-6 text-center ">
+				<h2><a href="clanek">Seznam článků</a></h2>
+				<h2><a href="clenove">Seznam všech členů</a></h2>
+				<h2><a href="kategorie">Seznam kategorií</a></h2>
+				<h2><a href="funkcionari">Seznam funkcionářů</a></h2>
+				<h2><a href="treneri">Seznam trenérů</a></h2>
+				<h2><a href="tymy">Seznam týmů</a></h2>
+				<h2><a href="galerie">Seznam alb</a></h2>
+			</div>
+
+			<br>
+		</div>
+	<?php endif ?>
+</div>
+
+<br />
+
+<div class="odhlasit">
+	<p class="odhlas"><a href="administrace/odhlasit">ODHLÁSIT</a></p>
+</div>

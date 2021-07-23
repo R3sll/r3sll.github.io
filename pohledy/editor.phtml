@@ -1,0 +1,109 @@
+<br /><br />
+
+<br />
+
+
+<?php $datum = $clanek['datum'] ?>
+<form method="post" class="edit" enctype="multipart/form-data">
+
+	<h1>EDITOR ČLÁNKŮ</h1>
+
+	<div class="form-group">
+		<input type="hidden" name="id_clanek" class="form-control my-input" value="<?= $clanek['id_clanek'] ?>" />
+	</div>
+
+	Titulek
+
+	<br />
+
+	<div class="form-group">
+		<input type="text" name="nazev_clanku" class="form-control my-input" value="<?= $clanek['nazev_clanku'] ?>" />
+	</div>
+
+	<br />
+	<br />
+
+	Datum přidání článku
+
+	<br />
+
+	<div class="form-group">
+		<input type="datetime-local" name="datum" class="form-control my-input" value="<?php if ($datum) {
+																							echo date("Y-m-d\TH:i:s", strtotime($datum));
+																						} else {
+																							echo "2021-01-01T00:00";
+																						} ?>" min="2021-01-01T00:00" required/>
+	</div>
+
+	<br />
+	<br />
+
+	URL
+	<br />
+
+	<div class="form-group">
+		<input type="text" name="url" class="form-control my-input" value="<?= $clanek['url'] ?>" required/>
+	</div>
+
+	<br />
+	<br />
+
+	Úvodní fotka
+
+	<br />
+
+	<div class="form-group">
+		<input type="file" name="img" id="img" required>
+	</div>
+
+	<br />
+	<br />
+
+	Popisek
+
+	<br />
+
+	<div class="form-group">
+		<input type="text" name="popisek" class="form-control my-input" value="<?= $clanek['popisek'] ?>" required/>
+	</div>
+
+	<br />
+	<br />
+
+	Text článku
+
+	<br />
+
+	<div class="form-group">
+		<textarea name="text_clanku" class="texta"><?= $clanek['text_clanku'] ?></textarea>
+	</div>
+
+	<br />
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-block btn-warning send-button tx-tfm">ULOŽIT ČLÁNEK</button>
+	</div>
+
+</form>
+
+<script src="https://cdn.tiny.cloud/1/zmruqd177l05g6sh07a0iyprzh81adu7eoembsc8bl5r346s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+	tinymce.init({
+		selector: "textarea[name=text_clanku]",
+
+menubar:'file edit insert view table',
+
+		plugins: [
+			"autolink lists link image charmap print preview anchor",
+			"searchreplace visualblocks code fullscreen paste"
+		],
+
+		toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | paste pastetext",
+		entities: "160,nbsp",
+		entity_encoding: "named",
+		
+	});
+</script>
+<br /><br />
+
+

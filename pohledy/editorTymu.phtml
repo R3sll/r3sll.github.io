@@ -1,0 +1,31 @@
+<br />
+<br />
+<br />
+
+<form method="post" class="edit">
+
+	<h1>EDITOR TÝMŮ</h1>
+
+	<input type="hidden" name="id_tymy" class="form-control my-input" value="<?= $tym['id_tymy'] ?>" />
+
+	<br />
+
+	Název týmu
+
+	<br />
+
+	<div class="form-group">
+		<input type="text" name="nazev_tymu" class="form-control my-input" value="<?= $tym['nazev_tymu'] ?>" required/>
+	</div>
+
+	<br />
+	<br />
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-block btn-warning send-button tx-tfm">ULOŽIT TRENÉRA</button>
+	</div>
+
+</form>
+
+<br />
+<br />
